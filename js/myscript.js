@@ -52,22 +52,25 @@ function checkNumbers(userInput,numbersRandom){
     const containerInsert = document.getElementById("my-insert-container");
     containerInsert.classList.add("d-none");
     
-    console.log(userInput + " before");
+    console.log(userInput + " user before");
     console.log(numbersRandom + " random before");    
     let score = 0;
     for(let i = 0; i < userInput.length; i++){
         console.log((userInput[i]) + " input i");
         console.log(numbersRandom + " random after"); 
+        console.log((numbersRandom.includes(userInput[0])) + " includes");
         if(numbersRandom.includes(userInput[i])){
             console.log("sono qui if");
-            score ++;
+        } else {
+            console.log("nooooo");
+            score++;
         }
 
         console.log(score);
     }
 
-    console.log(userInput + " user numbers after");
-    console.log(numbersRandom + " numeri after");  
+    console.log(userInput + " user numbers end");
+    console.log(numbersRandom + " random numeri end");  
 
     console.log("Hai indovinato n." + score + " numeri");
     document.getElementById("output-score").classList.add("p-4");
