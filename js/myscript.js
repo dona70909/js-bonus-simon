@@ -1,3 +1,4 @@
+
 /**
 * Function that creates N unique numbers from minimun(min) value to N(maximun)
 * @param {*} N value of how many numbers you want 
@@ -42,7 +43,7 @@ function cancelNumbers(){
 }
 
 
-/**
+/** 
  *  function that checks if the random number are equal to the inserted numbers
  * @param {*} userNumbers array of numbers from the input
  */
@@ -56,9 +57,12 @@ function checkNumbers(userInput,numbersRandom){
     console.log(numbersRandom + " random before");    
     let score = 0;
     for(let i = 0; i < userInput.length; i++){
+
         console.log((userInput[i]) + " input i");
         console.log(numbersRandom + " random after"); 
+        //  if i insert the right number return false but should be true
         console.log((numbersRandom.includes(userInput[0])) + " includes");
+
         if(numbersRandom.includes(userInput[i])){
             console.log("sono qui if");
         } else {
@@ -75,7 +79,23 @@ function checkNumbers(userInput,numbersRandom){
     console.log("Hai indovinato n." + score + " numeri");
     document.getElementById("output-score").classList.add("p-4");
     document.getElementById("output-score").innerHTML = ("Hai indovinato " + score + " numeri");
-}
+} 
+
+/* function checkNumbers(userNumbers,numbers){
+    let score = 0;
+    console.log(userNumbers + " user numbers");
+    console.log(numbers + " numeri");    
+    for(let i = 0; i < userNumbers.length; i++){
+        if (userNumbers.includes(numbers[i])){
+            score++;
+        }
+    }
+    
+    console.log("Hai indovinato n." + score + " numeri");
+    document.getElementById("output-score").classList.add("p-4");
+    document.getElementById("output-score").innerHTML = ("Hai indovinato n." + score + " numeri");
+} */
+
 
 
 
@@ -103,7 +123,7 @@ function userInsertNumber(){
         //# aggiungo il valore all'interno di un array
         if(!check){
             if((userNumbers.length >= 0) && (userNumbers.length  <= 4)){
-                const inputUser = document.getElementById("my-input").value;
+                const inputUser = parseInt(document.getElementById("my-input").value);
                 userNumbers.push(inputUser);
                 console.log(userNumbers);
                 form = document.getElementById("form").reset();
