@@ -41,7 +41,11 @@ function cancelNumbers(){
     parent.innerHTML = " ";
 }
 
-// # dopo 4005s posso inserire i numeri altrimenti posso inserirli subito e quindi il gioco non ha senso
+// ++++++
+
+// ******************************************************
+const timeOutInsert = setTimeout(userInsertNumber,time + 5);
+// #  dopo 4005s posso inserire i numeri altrimenti posso inserirli subito e quindi il gioco non ha senso
 /**
 * % come inserisco i numeri 
 *    a) prendo il valore dall'input
@@ -50,10 +54,6 @@ function cancelNumbers(){
 *         b-2) il valore viene azzerato
 *    c) ripeto per 5 volte 
 */
-
-
-
-const timeOutInsert = setTimeout(userInsertNumber,time + 5);
 function userInsertNumber(){
     //# visualizzo l'input
     const containerInsert = document.getElementById("my-insert-container");
@@ -80,11 +80,28 @@ function userInsertNumber(){
                 form = document.getElementById("form").reset();
             } else {
                 check = true;
+                checkNumbers(userNumbers);
             }
         }
     });
+}
+
+// ! ++++++++++++++++
+function checkNumbers(userNumbers){
+    const containerInsert = document.getElementById("my-insert-container");
+    containerInsert.classList.add("d-none");
+    let score = 0;
+    console.log(userNumbers + " user numbers");
+    console.log(numbers + " numeri");    
+    for(let i = 0; i < userNumbers.length; i++){
+        if (userNumbers.includes(numbers[i])){
+            score++;
+        }
+    }
     
-    return userNumbers;
+    console.log("Hai indovinato n." + score + " numeri");
+    document.getElementById("output-score").classList.add("p-4");
+    document.getElementById("output-score").innerHTML = ("Hai indovinato n." + score + " numeri");
 }
 
 
