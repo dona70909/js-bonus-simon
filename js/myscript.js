@@ -31,7 +31,7 @@ function insertNumber(array,element){
 // & assegno ad una variabile l'array dei numeri random
 const numbers = uniqueRandomNumbers(5,1,100);
 // & tempo in cui sono visibili ancora i numeri randomici, trascorso questo tempo....
-const time = 1000;
+const time = 3000;
 //& ***** inserisco i numeri *****
 insertNumber(numbers,"container-numbers");
 
