@@ -94,7 +94,6 @@ function userInsertNumber(){
             if((userNumbers.length >= 0) && (userNumbers.length  <= 4)){
                 const inputUser = parseInt(document.getElementById("my-input").value);
                 userNumbers.push(inputUser);
-                console.log(userNumbers);
                 form = document.getElementById("form").reset();
             } else {
                 check = true;
