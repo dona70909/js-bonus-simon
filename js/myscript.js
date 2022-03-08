@@ -58,13 +58,8 @@ function checkNumbers(userInput,numbersRandom){
     let score = 0;
     for(let i = 0; i < userInput.length; i++){
         if(numbersRandom.includes(userInput[i])){
-            console.log("sono qui if");
-        } else {
-            console.log("nooooo");
             score++;
-        }
-
-        console.log(score);
+        } 
     }
     console.log("Hai indovinato n." + score + " numeri");
     document.getElementById("output-score").classList.add("p-4");
