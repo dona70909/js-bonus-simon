@@ -30,7 +30,7 @@ function insertNumber(array,element){
 // & assegno ad una variabile l'array dei numeri random
 const numbers = uniqueRandomNumbers(5,1,100);
 // & tempo in cui sono visibili ancora i numeri randomici, trascorso questo tempo....
-const time = 4000;
+const time = 1000;
 //& ***** inserisco i numeri *****
 insertNumber(numbers,"container-numbers");
 
@@ -41,26 +41,40 @@ function cancelNumbers(){
     parent.innerHTML = " ";
 }
 
+
 /**
  *  function that checks if the random number are equal to the inserted numbers
  * @param {*} userNumbers array of numbers from the input
  */
-function checkNumbers(userNumbers){
+
+
+function checkNumbers(userInput,numbersRandom){
     const containerInsert = document.getElementById("my-insert-container");
     containerInsert.classList.add("d-none");
+    
+    console.log(userInput + " before");
+    console.log(numbersRandom + " before");    
     let score = 0;
-    console.log(userNumbers + " user numbers");
-    console.log(numbers + " numeri");    
-    for(let i = 0; i < userNumbers.length; i++){
-        if (userNumbers.includes(numbers[i])){
-            score++;
+    for(let i = 0; i < userInput.length; i++){
+        console.log("sono qui  for");
+        if(numbersRandom.includes(userInput[i])){
+            console.log("sono qui if");
+            score ++;
         }
+
+        console.log(score);
     }
+
+    console.log(userInput + " user numbers after");
+    console.log(numbersRandom + " numeri after");  
 
     console.log("Hai indovinato n." + score + " numeri");
     document.getElementById("output-score").classList.add("p-4");
-    document.getElementById("output-score").innerHTML = ("Hai indovinato n." + score + " numeri");
+    document.getElementById("output-score").innerHTML = ("Hai indovinato " + score + " numeri");
 }
+
+
+
 
 
 const timeOutInsert = setTimeout(userInsertNumber,time + 5);
@@ -91,11 +105,11 @@ function userInsertNumber(){
                 form = document.getElementById("form").reset();
             } else {
                 check = true;
-                checkNumbers(userNumbers);
+                checkNumbers(userNumbers,numbers);
             }
+
+            console.log(userNumbers);
         }
     });
 }
-
-
 
