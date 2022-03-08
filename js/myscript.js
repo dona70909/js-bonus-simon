@@ -53,15 +53,19 @@ function checkNumbers(userInput,numbersRandom){
     const containerInsert = document.getElementById("my-insert-container");
     containerInsert.classList.add("d-none");
     
-    console.log(userInput + " user before");
-    console.log(numbersRandom + " random before");    
+    // controllo
+    //console.log(userInput + " user before");
+    //console.log(numbersRandom + " random before"); 
+
     let score = 0;
     for(let i = 0; i < userInput.length; i++){
         if(numbersRandom.includes(userInput[i])){
             score++;
         } 
     }
-    console.log("Hai indovinato n." + score + " numeri");
+
+    // controllo
+    //console.log("Hai indovinato n." + score + " numeri");
     document.getElementById("output-score").classList.add("p-4");
     document.getElementById("output-score").innerHTML = ("Hai indovinato " + score + " numeri");
 } 
