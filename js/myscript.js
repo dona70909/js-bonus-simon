@@ -53,10 +53,11 @@ function checkNumbers(userInput,numbersRandom){
     containerInsert.classList.add("d-none");
     
     console.log(userInput + " before");
-    console.log(numbersRandom + " before");    
+    console.log(numbersRandom + " random before");    
     let score = 0;
     for(let i = 0; i < userInput.length; i++){
-        console.log("sono qui  for");
+        console.log((userInput[i]) + " input i");
+        console.log(numbersRandom + " random after"); 
         if(numbersRandom.includes(userInput[i])){
             console.log("sono qui if");
             score ++;
@@ -107,8 +108,6 @@ function userInsertNumber(){
                 check = true;
                 checkNumbers(userNumbers,numbers);
             }
-
-            console.log(userNumbers);
         }
     });
 }
