@@ -51,28 +51,37 @@ function cancelNumbers(){
 *    c) ripeto per 5 volte 
 */
 
-// # array dei numeri inseriti dall'utente
-const userNumbers = [];
+
 
 const timeOutInsert = setTimeout(userInsertNumber,time + 5);
 function userInsertNumber(){
     //# visualizzo l'input
     const containerInsert = document.getElementById("my-insert-container");
     containerInsert.classList.remove("d-none");
-
-
+    
+    // # array dei numeri inseriti dall'utente
+    const userNumbers = [];
+    
     // # prendo il button
     const insertBtn = document.getElementById("insert-btn");
-
+    
     let form = document.getElementById("form").reset();
+    let check = false;
+
     //# aggiungo l'evento click al button
     insertBtn.addEventListener("click",function(){
         // # prendo il valore dell'input
         //# aggiungo il valore all'interno di un array
-        const inputUser = document.getElementById("my-input").value;
-        userNumbers.push(inputUser);
-        console.log(userNumbers);
-        form = document.getElementById("form").reset();
+        if(!check){
+            if((userNumbers.length >= 0) && (userNumbers.length  <= 4)){
+                const inputUser = document.getElementById("my-input").value;
+                userNumbers.push(inputUser);
+                console.log(userNumbers);
+                form = document.getElementById("form").reset();
+            } else {
+                check = true;
+            }
+        }
     });
     
     return userNumbers;
