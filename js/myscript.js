@@ -57,12 +57,6 @@ function checkNumbers(userInput,numbersRandom){
     console.log(numbersRandom + " random before");    
     let score = 0;
     for(let i = 0; i < userInput.length; i++){
-
-        console.log((userInput[i]) + " input i");
-        console.log(numbersRandom + " random after"); 
-        //  if i insert the right number return false but should be true
-        console.log((numbersRandom.includes(userInput[0])) + " includes");
-
         if(numbersRandom.includes(userInput[i])){
             console.log("sono qui if");
         } else {
@@ -72,34 +66,10 @@ function checkNumbers(userInput,numbersRandom){
 
         console.log(score);
     }
-
-    console.log(userInput + " user numbers end");
-    console.log(numbersRandom + " random numeri end");  
-
     console.log("Hai indovinato n." + score + " numeri");
     document.getElementById("output-score").classList.add("p-4");
     document.getElementById("output-score").innerHTML = ("Hai indovinato " + score + " numeri");
 } 
-
-/* function checkNumbers(userNumbers,numbers){
-    let score = 0;
-    console.log(userNumbers + " user numbers");
-    console.log(numbers + " numeri");    
-    for(let i = 0; i < userNumbers.length; i++){
-        if (userNumbers.includes(numbers[i])){
-            score++;
-        }
-    }
-    
-    console.log("Hai indovinato n." + score + " numeri");
-    document.getElementById("output-score").classList.add("p-4");
-    document.getElementById("output-score").innerHTML = ("Hai indovinato n." + score + " numeri");
-} */
-
-
-
-
-
 
 const timeOutInsert = setTimeout(userInsertNumber,time + 5);
 // ! dopo 4005s posso inserire i numeri altrimenti posso inserirli subito e quindi il gioco non ha senso
