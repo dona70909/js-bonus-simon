@@ -27,11 +27,11 @@ function insertNumber(array,element){
     }
 } 
 
-// # assegno ad una variabile l'array dei numeri random
+// & assegno ad una variabile l'array dei numeri random
 const numbers = uniqueRandomNumbers(5,1,100);
-// # tempo in cui sono visibili ancora i numeri randomici, trascorso questo tempo....
+// & tempo in cui sono visibili ancora i numeri randomici, trascorso questo tempo....
 const time = 4000;
-//# inserisco i numeri
+//& ***** inserisco i numeri *****
 insertNumber(numbers,"container-numbers");
 
 // # trascorso il tempo i numeri randomici scompaiono
@@ -44,31 +44,41 @@ function cancelNumbers(){
 // # dopo 4005s posso inserire i numeri altrimenti posso inserirli subito e quindi il gioco non ha senso
 /**
 * % come inserisco i numeri 
-*     a) prendo il valore dall'input
-*     b) inserisco il valore in un array 
-*     c) premo insert 
-*         c-1) il valore viene inserito in un array
-*         c-2) il valore viene azzerato
-*     d) ripeto per 5 volte 
+*    a) prendo il valore dall'input
+*    b) premo insert 
+*         b-1) il valore viene inserito in un array
+*         b-2) il valore viene azzerato
+*    c) ripeto per 5 volte 
 */
+
+// # array dei numeri inseriti dall'utente
 const userNumbers = [];
 
 const timeOutInsert = setTimeout(userInsertNumber,time + 5);
 function userInsertNumber(){
     //# visualizzo l'input
-    const containerInsert = document.querySelector(".my-insert-container");
+    const containerInsert = document.getElementById("my-insert-container");
     containerInsert.classList.remove("d-none");
+
+
     // # prendo il button
     const insertBtn = document.getElementById("insert-btn");
-    
+
+    let form = document.getElementById("form").reset();
     //# aggiungo l'evento click al button
     insertBtn.addEventListener("click",function(){
         // # prendo il valore dell'input
-        let inputUser = document.getElementById("my-input").value;
-        //# aggiungo il valore all'interno di un array 
+        //# aggiungo il valore all'interno di un array
+        const inputUser = document.getElementById("my-input").value;
         userNumbers.push(inputUser);
+        console.log(userNumbers);
+        form = document.getElementById("form").reset();
     });
+    
+    return userNumbers;
 }
+
+
 /* const timeOutInsert = setTimeout(userInsertNumber,time + 5);
 function userInsertNumber(){
     for(let i = 0; i < numbers.length; i++){
@@ -78,11 +88,12 @@ function userInsertNumber(){
     return userNumbers;
 } */
 
-const timeOutCheck = setTimeout(checkNumbers,time + 6000);
-function checkNumbers(){
-    const containerInsert = document.querySelector(".my-insert-container");
-    containerInsert.classList.add("d-none");
 
+/*
+const timeOutCheck = setTimeout(checkNumbers,time + 6000)
+function checkNumbers(){
+    const containerInsert = document.getElementById("my-insert-container");
+    containerInsert.classList.add("d-none");
     let score = 0;
     console.log(userNumbers + " user numbers");
     console.log(numbers + " numeri");    
@@ -97,4 +108,24 @@ function checkNumbers(){
     document.getElementById("output-score").innerHTML = ("Hai indovinato n." + score + " numeri");
 }
 
+
+/* const timeOutCheck = setTimeout(checkNumbers,time + 6000);
+function checkNumbers(){
+    const containerInsert = document.querySelector(".my-insert-container");
+    containerInsert.classList.add("d-none");
+    
+    let score = 0;
+    console.log(userNumbers + " user numbers");
+    console.log(numbers + " numeri");    
+    for(let i = 0; i < userNumbers.length; i++){
+        if (userNumbers.includes(numbers[i])){
+            score++;
+        }
+    }
+    
+    console.log("Hai indovinato n." + score + " numeri");
+    document.getElementById("output-score").classList.add("p-4");
+    document.getElementById("output-score").innerHTML = ("Hai indovinato n." + score + " numeri");
+}
+*/
 
