@@ -41,19 +41,30 @@ function cancelNumbers(){
     parent.innerHTML = " ";
 }
 
-// ++++++
-
-// ******************************************************
-const timeOutInsert = setTimeout(userInsertNumber,time + 5);
-// #  dopo 4005s posso inserire i numeri altrimenti posso inserirli subito e quindi il gioco non ha senso
 /**
-* % come inserisco i numeri 
-*    a) prendo il valore dall'input
-*    b) premo insert 
-*         b-1) il valore viene inserito in un array
-*         b-2) il valore viene azzerato
-*    c) ripeto per 5 volte 
-*/
+ *  function that checks if the random number are equal to the inserted numbers
+ * @param {*} userNumbers array of numbers from the input
+ */
+function checkNumbers(userNumbers){
+    const containerInsert = document.getElementById("my-insert-container");
+    containerInsert.classList.add("d-none");
+    let score = 0;
+    console.log(userNumbers + " user numbers");
+    console.log(numbers + " numeri");    
+    for(let i = 0; i < userNumbers.length; i++){
+        if (userNumbers.includes(numbers[i])){
+            score++;
+        }
+    }
+
+    console.log("Hai indovinato n." + score + " numeri");
+    document.getElementById("output-score").classList.add("p-4");
+    document.getElementById("output-score").innerHTML = ("Hai indovinato n." + score + " numeri");
+}
+
+
+const timeOutInsert = setTimeout(userInsertNumber,time + 5);
+// ! dopo 4005s posso inserire i numeri altrimenti posso inserirli subito e quindi il gioco non ha senso
 function userInsertNumber(){
     //# visualizzo l'input
     const containerInsert = document.getElementById("my-insert-container");
@@ -86,72 +97,5 @@ function userInsertNumber(){
     });
 }
 
-// ! ++++++++++++++++
-function checkNumbers(userNumbers){
-    const containerInsert = document.getElementById("my-insert-container");
-    containerInsert.classList.add("d-none");
-    let score = 0;
-    console.log(userNumbers + " user numbers");
-    console.log(numbers + " numeri");    
-    for(let i = 0; i < userNumbers.length; i++){
-        if (userNumbers.includes(numbers[i])){
-            score++;
-        }
-    }
-    
-    console.log("Hai indovinato n." + score + " numeri");
-    document.getElementById("output-score").classList.add("p-4");
-    document.getElementById("output-score").innerHTML = ("Hai indovinato n." + score + " numeri");
-}
 
-
-/* const timeOutInsert = setTimeout(userInsertNumber,time + 5);
-function userInsertNumber(){
-    for(let i = 0; i < numbers.length; i++){
-        let insertUserNumber = parseInt(prompt("Inserisci un numero"));
-        userNumbers.push(insertUserNumber);
-    }
-    return userNumbers;
-} */
-
-
-/*
-const timeOutCheck = setTimeout(checkNumbers,time + 6000)
-function checkNumbers(){
-    const containerInsert = document.getElementById("my-insert-container");
-    containerInsert.classList.add("d-none");
-    let score = 0;
-    console.log(userNumbers + " user numbers");
-    console.log(numbers + " numeri");    
-    for(let i = 0; i < userNumbers.length; i++){
-        if (userNumbers.includes(numbers[i])){
-            score++;
-        }
-    }
-    
-    console.log("Hai indovinato n." + score + " numeri");
-    document.getElementById("output-score").classList.add("p-4");
-    document.getElementById("output-score").innerHTML = ("Hai indovinato n." + score + " numeri");
-}
-
-
-/* const timeOutCheck = setTimeout(checkNumbers,time + 6000);
-function checkNumbers(){
-    const containerInsert = document.querySelector(".my-insert-container");
-    containerInsert.classList.add("d-none");
-    
-    let score = 0;
-    console.log(userNumbers + " user numbers");
-    console.log(numbers + " numeri");    
-    for(let i = 0; i < userNumbers.length; i++){
-        if (userNumbers.includes(numbers[i])){
-            score++;
-        }
-    }
-    
-    console.log("Hai indovinato n." + score + " numeri");
-    document.getElementById("output-score").classList.add("p-4");
-    document.getElementById("output-score").innerHTML = ("Hai indovinato n." + score + " numeri");
-}
-*/
 
