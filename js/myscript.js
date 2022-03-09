@@ -102,7 +102,10 @@ function userInsertNumber(){
         if(!check){
             if((userNumbers.length >= 0) && (userNumbers.length  < 4)){
                 const inputUser = parseInt(document.getElementById("my-input").value);
-                userNumbers.push(inputUser);
+                //userNumbers.push(inputUser);
+                if(!uniqueNumberPush (userNumbers,inputUser)){
+                    parseInt(document.getElementById("my-input").value);
+                }
                 form = document.getElementById("form").reset();
             } else {
                 check = true;
@@ -112,3 +115,9 @@ function userInsertNumber(){
     });
 }
 
+function uniqueNumberPush (array,element){
+    if(!array.includes(element)){
+        array.push(element);
+        return true;
+    } 
+}
