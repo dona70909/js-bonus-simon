@@ -58,16 +58,25 @@ function checkNumbers(userInput,numbersRandom){
     //console.log(numbersRandom + " random before"); 
 
     let score = 0;
+    const guessedNumbers = [];
+    
     for(let i = 0; i < userInput.length; i++){
         if(numbersRandom.includes(userInput[i])){
+            guessedNumbers.push(userInput[i]);
             score++;
+
         } 
     }
 
+    const numberSuf = (score !== 1) ? "numeri" : "numero";
     // controllo
     //console.log("Hai indovinato n." + score + " numeri");
     document.getElementById("output-score").classList.add("p-4");
-    document.getElementById("output-score").innerHTML = ("Hai indovinato " + score + " numeri");
+    document.getElementById("output-score").innerHTML = ` Hai indovinato  ${score}  ${numberSuf}.<br>
+    I numeri che hai inserito: ${userInput.join(", ")},<br>
+    I numeri random:  ${numbersRandom.join(", ")}<br>
+    Numeri indovinati ${guessedNumbers.join(", ")}
+    `;
 } 
 
 const timeOutInsert = setTimeout(userInsertNumber,time + 5);
@@ -91,7 +100,7 @@ function userInsertNumber(){
         // # prendo il valore dell'input
         //# aggiungo il valore all'interno di un array
         if(!check){
-            if((userNumbers.length >= 0) && (userNumbers.length  <= 4)){
+            if((userNumbers.length >= 0) && (userNumbers.length  < 4)){
                 const inputUser = parseInt(document.getElementById("my-input").value);
                 userNumbers.push(inputUser);
                 form = document.getElementById("form").reset();
